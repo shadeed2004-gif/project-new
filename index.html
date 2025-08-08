@@ -1,27 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Palm Scanner</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>🔮 Mystic Palm Reader</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    <h1>🖐 Palm Scanner 3000</h1>
-    <p class="subtitle">Upload your palm and see a mix of good and bad futures.</p>
+  <div class="container">
+    <header>
+      <h1>🔮 Mystic Palm Reader</h1>
+      <p class="subtitle">Upload your palm and discover your unique future!</p>
+    </header>
 
-    <input type="file" id="imageUpload" accept="image/*">
-
-    <div id="scannerContainer" class="hidden">
-        <div id="imageArea">
-            <img id="palmImage" alt="Palm Image">
+    <main>
+      <section class="scanner-section">
+        <input type="file" id="imageUpload" accept="image/*" />
+        <div id="scannerContainer" class="hidden">
+          <div id="imageArea">
+            <img id="palmImage" alt="Palm Image" />
             <div id="scanLine"></div>
+          </div>
+          <p id="statusText">Scanning...</p>
         </div>
-        <p id="statusText">Scanning...</p>
-    </div>
+      </section>
 
-    <div id="result" class="hidden"></div>
+      <section class="result-section">
+        <div id="result" class="hidden"></div>
+      </section>
+    </main>
 
-    <script src="script.js"></script>
+    <footer>
+      <p>Made with 🔮 by Your Mystic Guide</p>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
 </body>
 </html>
