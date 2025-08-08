@@ -1,31 +1,32 @@
-const video = document.getElementById('camera');
-const scanBtn = document.getElementById('scanBtn');
-const scannerLine = document.getElementById('scanner-line');
-const resultBox = document.getElementById('result');
+let currentInput = "";
+let letters = [];
 
-// Scripted random outputs
-const outputs = [
-    "You will have a lucky day 🍀",
-    "A surprise is coming your way 🎁",
-    "Beware of spilled coffee today ☕",
-    "Someone will text you soon 📱",
-    "Your palm says: nap time 😴",
-    "Good news is on the horizon 🌅"
-];
+const display = document.getElementById("display");
 
-// Start camera
-navigator.mediaDevices.getUserMedia({ video: true })
-    .then(stream => { video.srcObject = stream; })
-    .catch(err => { alert("Camera access denied!"); });
+document.querySelectorAll(".letters button").forEach(btn => {
+    btn.addEventListener("click", () => {
+        currentInput = btn.textContent; // store current letter
+        display.textContent += currentInput;
+    });
+});
 
-scanBtn.addEventListener('click', () => {
-    resultBox.textContent = "";
-    scannerLine.style.animation = "scan 2s linear infinite";
+document.getElementById("plus").addEventListener("click", () => {
+    if (currentInput) {
+        letters.push(currentInput);
+        display.textContent += " + ";
+        currentInput = "";
+    }
+});
 
-    // Fake scanning delay
-    setTimeout(() => {
-        scannerLine.style.animation = "none";
-        const randomMessage = outputs[Math.floor(Math.random() * outputs.length)];
-        resultBox.textContent = randomMessage;
-    }, 5000);
+document.getElementById("equals").addEventListener("click", () => {
+    if (currentInput) letters.push(currentInput);
+    display.textContent = letters.join("");
+    letters = [];
+    currentInput = "";
+});
+
+document.getElementById("clear").addEventListener("click", () => {
+    currentInput = "";
+    letters = [];
+    display.textContent = "";
 });
