@@ -1,16 +1,30 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Segoe UI', sans-serif;
     text-align: center;
-    background-color: #1a1a1a;
+    background-color: #0d0d0d;
     color: white;
+    padding: 20px;
 }
 
 h1 {
-    margin-top: 20px;
+    margin-top: 10px;
+    color: #00ffcc;
+    text-shadow: 0 0 10px #00ffcc;
+}
+
+.subtitle {
+    color: #aaa;
+    margin-bottom: 20px;
 }
 
 input[type="file"] {
-    margin: 20px;
+    margin: 15px;
+    padding: 10px;
+    background: #111;
+    color: white;
+    border: 2px solid #00ffcc;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
 #scannerContainer {
@@ -28,6 +42,7 @@ input[type="file"] {
     max-width: 300px;
     border: 3px solid #00ffcc;
     border-radius: 10px;
+    box-shadow: 0 0 20px #00ffcc;
 }
 
 #scanLine {
@@ -35,9 +50,10 @@ input[type="file"] {
     top: 0;
     left: 0;
     width: 100%;
-    height: 3px;
-    background-color: lime;
-    animation: scan 2s linear infinite;
+    height: 4px;
+    background: linear-gradient(90deg, transparent, lime, transparent);
+    animation: scan 1.5s linear infinite;
+    box-shadow: 0 0 10px lime;
 }
 
 @keyframes scan {
@@ -49,18 +65,26 @@ input[type="file"] {
     display: none;
 }
 
+#statusText {
+    margin-top: 10px;
+    font-style: italic;
+    color: #0ff;
+}
+
 #result {
-    margin-top: 20px;
+    margin-top: 25px;
     font-size: 1.1em;
-    background-color: #222;
+    background-color: #111;
     padding: 15px;
     border-radius: 8px;
     max-width: 350px;
     margin-left: auto;
     margin-right: auto;
     text-align: left;
+    box-shadow: 0 0 15px #00ffcc;
 }
 
 #result p {
     margin: 8px 0;
+    line-height: 1.4em;
 }
