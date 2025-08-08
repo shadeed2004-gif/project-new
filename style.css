@@ -1,0 +1,49 @@
+body {
+    font-family: Arial, sans-serif;
+    background: #111;
+    color: #fff;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    margin-top: 20px;
+}
+
+video {
+    width: 300px;
+    height: 400px;
+    border: 3px solid #0f0;
+    border-radius: 10px;
+    position: relative;
+}
+
+#scanner-line {
+    position: absolute;
+    width: 300px;
+    height: 2px;
+    background: lime;
+    animation: none;
+}
+
+@keyframes scan {
+    0% { top: 0px; }
+    100% { top: 398px; }
+}
+
+button {
+    margin-top: 15px;
+    padding: 10px 20px;
+    background: lime;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+#result {
+    margin-top: 15px;
+    font-size: 20px;
+    color: yellow;
+}

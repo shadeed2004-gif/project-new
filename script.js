@@ -1,15 +1,31 @@
-function predictFuture() {
-    const predictions = [
-        "You will have great success in your career 🌟",
-        "A surprise gift is coming your way 🎁",
-        "You will travel to a beautiful place soon ✈",
-        "Beware of someone trying to deceive you ⚠",
-        "A small challenge will make you stronger 💪",
-        "Love and happiness are on the horizon ❤",
-        "Be cautious with your spending this month 💰",
-        "Good news will arrive unexpectedly 📩"
-    ];
+const video = document.getElementById('camera');
+const scanBtn = document.getElementById('scanBtn');
+const scannerLine = document.getElementById('scanner-line');
+const resultBox = document.getElementById('result');
 
-    const randomIndex = Math.floor(Math.random() * predictions.length);
-    document.getElementById("result").textContent = predictions[randomIndex];
-}
+// Scripted random outputs
+const outputs = [
+    "You will have a lucky day 🍀",
+    "A surprise is coming your way 🎁",
+    "Beware of spilled coffee today ☕",
+    "Someone will text you soon 📱",
+    "Your palm says: nap time 😴",
+    "Good news is on the horizon 🌅"
+];
+
+// Start camera
+navigator.mediaDevices.getUserMedia({ video: true })
+    .then(stream => { video.srcObject = stream; })
+    .catch(err => { alert("Camera access denied!"); });
+
+scanBtn.addEventListener('click', () => {
+    resultBox.textContent = "";
+    scannerLine.style.animation = "scan 2s linear infinite";
+
+    // Fake scanning delay
+    setTimeout(() => {
+        scannerLine.style.animation = "none";
+        const randomMessage = outputs[Math.floor(Math.random() * outputs.length)];
+        resultBox.textContent = randomMessage;
+    }, 5000);
+});

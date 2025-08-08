@@ -1,17 +1,23 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Palm Reading Future</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fake Palm Scanner</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>🔮 Palm Reading Prediction</h1>
-    <p>Place your palm on the screen... and click the button!</p>
-    <button onclick="predictFuture()">Read My Future</button>
-    <div id="result"></div>
 
-    <script src="script.js"></script>
+<div class="container">
+    <h1>🔮 Palm Scanner</h1>
+    <video id="camera" autoplay playsinline></video>
+
+    <div id="scanner-line"></div>
+    
+    <button id="scanBtn">Start Scan</button>
+    <div id="result"></div>
+</div>
+
+<script src="script.js"></script>
 </body>
 </html>
