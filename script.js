@@ -18,9 +18,10 @@ imageUpload.addEventListener("change", function() {
     }
 });
 
-function randomDate(startYear, endYear) {
-    const start = new Date(startYear, 0, 1);
-    const end = new Date(endYear, 11, 31);
+function randomDateFromToday(minYearsFromNow, maxYearsFromNow) {
+    const now = new Date();
+    const start = new Date(now.getFullYear() + minYearsFromNow, 0, 1);
+    const end = new Date(now.getFullYear() + maxYearsFromNow, 11, 31);
     const date = new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()));
     return date.toDateString();
 }
@@ -66,34 +67,34 @@ const allPredictions = [
     { text: "You will get locked out of your house on", type: "bad_event" }
 ];
 
-function getDateRange(type) {
+function getDateOffsetRange(type) {
     switch(type) {
         case "marriage":
-            return [2027, 2040];        // Marriage in 2-17 years
+            return [2, 15];          // 2 to 15 years from now
         case "job":
-            return [2025, 2032];        // Job in next few years
+            return [0, 7];           // up to 7 years from now
         case "job_loss":
-            return [2025, 2035];
+            return [0, 10];
         case "bad_finance":
-            return [2026, 2040];
+            return [1, 15];
         case "vacation":
-            return [2025, 2029];
+            return [0, 4];
         case "alien":
-            return [2030, 2050];
+            return [5, 25];
         case "luck":
-            return [2025, 2035];
+            return [0, 10];
         case "fun":
-            return [2025, 2028];
+            return [0, 3];
         case "bad_event":
-            return [2025, 2035];
+            return [0, 10];
         case "good_event":
-            return [2025, 2035];
+            return [0, 10];
         case "good_finance":
-            return [2027, 2035];
+            return [1, 10];
         case "death":
-            return [2080, 2110];        // Death far in the future
+            return [50, 100];        // death far away (50-100 years)
         default:
-            return [2025, 2040];
+            return [0, 10];
     }
 }
 
@@ -121,8 +122,8 @@ function startScanning() {
         const selected = shuffled.slice(0, 5);
 
         const formattedPredictions = selected.map(({text, type}) => {
-            const [startYear, endYear] = getDateRange(type);
-            const dateStr = randomDate(startYear, endYear);
+            const [minOffset, maxOffset] = getDateOffsetRange(type);
+            const dateStr = randomDateFromToday(minOffset, maxOffset);
             return `🔮 ${text} **${dateStr}**.`;
         });
 
