@@ -28,10 +28,10 @@ function randomDate(startYear, endYear) {
 function startScanning() {
     const scanStages = [
         "Scanning palm lines...",
-        "Finding your life’s mistakes...",
-        "Judging your decisions...",
-        "Laughing at your future...",
-        "Almost done ruining your hopes..."
+        "Detecting your poor life choices...",
+        "Judging your mistakes...",
+        "Laughing at your fate...",
+        "Almost done destroying your hopes..."
     ];
 
     let stageIndex = 0;
@@ -44,19 +44,26 @@ function startScanning() {
     }, 1200);
 
     setTimeout(() => {
-        const predictions = [
-            `💍 Marriage date: **${randomDate(2025, 2035)}** (good luck surviving).`,
-            `💼 Job offer: **${randomDate(2025, 2030)}** – hopefully not in customer service.`,
-            `🏚 Bankruptcy: **${randomDate(2026, 2040)}** – start saving now.`,
-            `🌴 Vacation: **${randomDate(2025, 2028)}** – probably cancelled last minute.`,
-            `🛸 Alien abduction: **${randomDate(2025, 2050)}** – don’t pack much.`,
-            `💰 Lottery win: **${randomDate(2025, 2030)}** – and lose it in 3 weeks.`,
-            `🍕 Best pizza: **${randomDate(2025, 2026)}** – enjoy it, it’s all downhill from there.`,
-            `⚰ Death: **${randomDate(2080, 2100)}** – or earlier if you keep eating gas station sushi.`
+        const allPredictions = [
+            `💍 You will get married on **${randomDate(2025, 2035)}**.`,
+            `💼 You will get your dream job on **${randomDate(2025, 2030)}**.`,
+            `💀 You will die on **${randomDate(2070, 2100)}** (mark your calendar).`,
+            `📉 You will lose your job on **${randomDate(2025, 2035)}**.`,
+            `🏚 You will go bankrupt on **${randomDate(2026, 2040)}**.`,
+            `🌴 You will travel to the Maldives on **${randomDate(2025, 2028)}**.`,
+            `🛸 You will be abducted by aliens on **${randomDate(2025, 2050)}**.`,
+            `💰 You will win the lottery on **${randomDate(2025, 2030)}**.`,
+            `🍕 You will eat the best pizza of your life on **${randomDate(2025, 2026)}**.`,
+            `⚠ Your worst enemy will find you on **${randomDate(2025, 2035)}**.`,
+            `😂 You will embarrass yourself in public on **${randomDate(2025, 2035)}**.`
         ];
 
-        resultBox.innerHTML = predictions.map(p => `<p>${p}</p>`).join("");
+        // Shuffle predictions and take only 5
+        const shuffled = allPredictions.sort(() => 0.5 - Math.random());
+        const selected = shuffled.slice(0, 5);
+
+        resultBox.innerHTML = selected.map(p => `<p>${p}</p>`).join("");
         resultBox.classList.remove("hidden");
-        statusText.textContent = "Scan complete. Try not to cry.";
+        statusText.textContent = "Scan complete.";
     }, scanStages.length * 1200 + 1000);
 }
