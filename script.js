@@ -4,17 +4,6 @@ const scannerContainer = document.getElementById("scannerContainer");
 const statusText = document.getElementById("statusText");
 const resultBox = document.getElementById("result");
 
-const predictions = [
-    "You will have an amazing day full of surprises!",
-    "A mysterious person will bring you good news.",
-    "Your hard work will soon pay off in unexpected ways.",
-    "An opportunity will knock — be ready to answer.",
-    "A new adventure awaits you this week.",
-    "You will soon find something you thought was lost.",
-    "Happiness will come from an unexpected source.",
-    "A small risk will lead to a big reward."
-];
-
 imageUpload.addEventListener("change", function() {
     const file = imageUpload.files[0];
     if (file) {
@@ -29,16 +18,37 @@ imageUpload.addEventListener("change", function() {
     }
 });
 
+function randomDate(startYear, endYear) {
+    const start = new Date(startYear, 0, 1);
+    const end = new Date(endYear, 11, 31);
+    const date = new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()));
+    return date.toDateString();
+}
+
 function startScanning() {
     statusText.textContent = "Scanning...";
     setTimeout(() => {
-        statusText.textContent = "Processing...";
+        statusText.textContent = "Analyzing palm lines...";
     }, 2000);
 
     setTimeout(() => {
-        const randomPrediction = predictions[Math.floor(Math.random() * predictions.length)];
-        resultBox.textContent = "🔮 " + randomPrediction;
+        statusText.textContent = "Predicting your future...";
+    }, 4000);
+
+    setTimeout(() => {
+        const predictions = [
+            `💍 Your marriage will happen on **${randomDate(2025, 2035)}**.`,
+            `💼 You will get your dream job on **${randomDate(2025, 2030)}**.`,
+            `🌴 You will go on a vacation to Maldives on **${randomDate(2025, 2028)}**.`,
+            `👶 You will have your first child on **${randomDate(2026, 2035)}**.`,
+            `🏆 You will win a big award on **${randomDate(2025, 2035)}**.`,
+            `🚀 You will meet an alien on **${randomDate(2025, 2050)}**.`,
+            `💰 You will win the lottery on **${randomDate(2025, 2030)}**.`,
+            `🍕 You will eat the best pizza of your life on **${randomDate(2025, 2026)}**.`
+        ];
+
+        resultBox.innerHTML = predictions.map(p => `<p>${p}</p>`).join("");
         resultBox.classList.remove("hidden");
         statusText.textContent = "Scan complete!";
-    }, 4000);
+    }, 6000);
 }
